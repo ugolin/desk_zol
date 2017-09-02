@@ -17,7 +17,7 @@ class DeskZolPipeline(object):
         if cursor.fetchone():   #去重
             raise DropItem('duplicate item : %s' % item['name'])
         else:
-            img_urls = ';'.join(item['img_url'])
+            img_urls = ';'.join(item['image_urls'])
             name = item['name']
             url =item['url']
             insert_sql = 'INSERT INTO bizhi VALUES ( '+ \
@@ -36,7 +36,6 @@ class MyImagesPipeline(ImagesPipeline):
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]
-        print(image_paths)
         if not image_paths:
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
@@ -53,7 +52,7 @@ class MyImagesPipeline(ImagesPipeline):
         item = request.meta['item']
         folder = item['name']
         folder_strip = strip(folder)
-        image_guid = request.url.split('/')[-1]+'.jpg'
+        image_guid = request.url.split('/')[-1]
         return u'full/{0}/{1}'.format(folder_strip, image_guid)
 def strip(path):
     """

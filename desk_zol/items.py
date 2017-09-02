@@ -13,7 +13,6 @@ class DeskZolItem(scrapy.Item):
     # name = scrapy.Field()
     name = scrapy.Field()
     url = scrapy.Field()
-    img_url = scrapy.Field()
     images = scrapy.Field()
     image_urls = scrapy.Field()
     image_paths = scrapy.Field()

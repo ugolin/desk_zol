@@ -69,6 +69,7 @@ ITEM_PIPELINES = {
     'desk_zol.pipelines.DeskZolPipeline': 300,
     'desk_zol.pipelines.MyImagesPipeline': 1,#定制图片下载管道
 }
+# 图片下载地址
 IMAGES_STORE = '/home/uu/spider'
 # 30 天的图片失效期限
 IMAGES_EXPIRES = 30
